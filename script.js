@@ -1,17 +1,25 @@
-// JavaScript to add dropdown interaction (optional)
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.nav-links li').forEach(function (item) {
-        item.addEventListener('mouseover', function () {
-            let dropdown = item.querySelector('.dropdown');
-            if (dropdown) {
-                dropdown.style.display = 'block';
-            }
-        });
-        item.addEventListener('mouseout', function () {
-            let dropdown = item.querySelector('.dropdown');
-            if (dropdown) {
-                dropdown.style.display = 'none';
-            }
-        });
-    });
-});
+let display = document.getElementById('display');
+
+function clearDisplay() {
+    display.innerText = '0';
+}
+
+function deleteLast() {
+    display.innerText = display.innerText.slice(0, -1) || '0';
+}
+
+function appendToDisplay(value) {
+    if (display.innerText === '0') {
+        display.innerText = value;
+    } else {
+        display.innerText += value;
+    }
+}
+
+function calculate() {
+    try {
+        display.innerText = eval(display.innerText);
+    } catch {
+        display.innerText = 'Error';
+    }
+}
